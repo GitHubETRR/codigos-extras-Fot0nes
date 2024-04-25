@@ -19,7 +19,7 @@ int main (void){
 }
 void Bienvenida (formato empleado[]){
     int eleccion, empleados;
-    printf("\n-----Menu-----\nAqui podra ingresar y mostrar la informacion de sus empleados.\nPor favor, ingrese 1, 2 o 3 de acuerdo a la información que vaya a ingresar.\n\n");
+    printf("\n-----Menu-----\n\n");
     do{
         printf("1. Ingreso de datos de un empleado.\n");
         printf("2. Mostrar informacion ingresada.\n");
