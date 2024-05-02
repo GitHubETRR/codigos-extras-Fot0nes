@@ -1,0 +1,46 @@
+#include <stdio.h>
+    
+    union floatbitmap {
+        float var;
+        unsigned char vec [4];
+         struct {
+             unsigned int mantisa : 23;
+             unsigned int exponente : 8;
+             unsigned int signo : 1;
+         }BITS;
+    };
+    
+   
+int main()
+{
+   union floatbitmap numero;
+    int opcion;
+    printf("1. Ingrese un numero\n");
+    printf("2. Ver numero\n");
+    printf("3. Salir del programa\n");
+    scanf ("%d", &opcion);
+    switch (opcion){
+    case 1:
+    printf ("Ha selecccionado opción 1, por favor ingrese un número.\n");
+    scanf ("%f", &numero.var);
+    case 2:
+    printf ("El numero en la memoria está guardado como:0x");
+     for(int i = 3; i>=0; i--){
+     printf("%02X", numero.vec[i]);
+     }
+      if(numero.BITS.signo==0){
+        printf("El signo es positivo\n"); 
+    }
+    else{
+        printf("El signo es negativo\n");
+    }
+    printf("La mantisa es 0x%02X\n",numero.BITS.mantisa);
+    printf("El exponente es %d\n", numero.BITS.exponente-127);
+    printf("El numero ingresado fue %f\n", numero.var);
+    return 0;
+    case 3:
+    return 0;
+}
+}
+
+
