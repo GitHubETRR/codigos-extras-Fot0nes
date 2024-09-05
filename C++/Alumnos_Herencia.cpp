@@ -10,7 +10,7 @@ private:
 public:
     Persona(string _nombre, int _edad) : nombre(_nombre), edad(_edad) {}
     void mostrarPersona() const {
-        cout << "Nombre: " << nombre << endl;
+        cout << "\n\nNombre: " << nombre << endl;
         cout << "Edad: " << edad << endl;
     }
 };
@@ -35,7 +35,7 @@ int main() {
     cout << "Ingrese cuantos alumnos va a ingresar: ";
     cin >> cantidad;
 
-    vector<Alumno> alumnos; 
+    vector<Alumno*> alumnos; 
 
     for (int i = 0; i < cantidad; i++) {
         string nombre, codigoAlumno;
@@ -53,14 +53,18 @@ int main() {
 
         cout << "Ingrese la nota final del alumno " << i + 1 << ": ";
         cin >> notaFinal;
-        alumnos.emplace_back(nombre, edad, codigoAlumno, notaFinal);
+       Alumno* nuevoAlumno = new Alumno (nombre, edad,codigoAlumno, notaFinal);
+        alumnos.push_back(nuevoAlumno);
+    
     }
     for (size_t i = 0; i < alumnos.size(); ++i)  {
-        alumnos[i].mostrarAlumno();
+        alumnos[i]-> mostrarAlumno();
         cout << "--------------------" << endl;
     }
+    for (size_t i=0; i<alumnos.size();++i){
+        delete alumnos[i];
+            }
 
     return 0;
 }
-
 
